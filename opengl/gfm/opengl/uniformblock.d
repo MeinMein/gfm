@@ -143,18 +143,25 @@ class GLUniformBlock
 									buffer.ptr);
 
 		name = sanitizeUTF8(buffer.ptr);
-		_gl._log.info("block name: " ~ name);
+
 		_gl.runtimeCheck();
 
 		_getBlockInfo(program_, blockIndex_, GL_UNIFORM_BLOCK_ACTIVE_UNIFORMS, &_uniformsNum);
-		_gl._log.info("block uniforms num: " ~ to!string(_uniformsNum));
 
 		_uniformsIndices = new GLsizei[_uniformsNum];
 		_getBlockInfo(program_, blockIndex_, GL_UNIFORM_BLOCK_ACTIVE_UNIFORM_INDICES, _uniformsIndices.ptr);
-		_gl._log.info("block uniforms ind: " ~ to!string(_uniformsIndices));
 
 		_getBlockInfo(program_, blockIndex_, GL_UNIFORM_BLOCK_DATA_SIZE, &_dataSize);
-		_gl._log.info("block uniforms size: " ~ to!string(_dataSize));
+
+		_gl.runtimeCheck();
+
+		debug
+		{
+			_gl._log.info("block name: " ~ name);	
+			_gl._log.info("block uniforms num: " ~ to!string(_uniformsNum));
+			_gl._log.info("block uniforms ind: " ~ to!string(_uniformsIndices));
+			_gl._log.info("block uniforms size: " ~ to!string(_dataSize));
+		}
 	}
 
 	private void _getBlockInfo(GLProgram program_, int blockIndex_, GLenum param_, GLsizei* dataPtr_)
