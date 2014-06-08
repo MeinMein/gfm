@@ -79,12 +79,14 @@ final class TextureUnit
         void bind(GLenum target, GLuint texture)
         {
             size_t index = targetToIndex(cast(Target)target);
-            if(_currentBinding[index] != texture)
-            {
+            // Fixed: Just because it's the same target and handle, does not mean
+            // it's the same texture. So always bind.
+            //if(_currentBinding[index] != texture)
+            //{
                 glBindTexture(target, texture);
                 _gl.runtimeCheck();
                 _currentBinding[index] = texture;
-            }
+            //}
         }
     }
 
