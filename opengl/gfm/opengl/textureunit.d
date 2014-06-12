@@ -37,12 +37,13 @@ final class TextureUnits
             if (glActiveTexture is null)
                 return;
 
-            if (_activeTexture != texture)
-            {
+            // cached value can be wrong when glActiveTexture is called outside gfm
+            //if (_activeTexture != texture)
+            //{
                 glActiveTexture(GL_TEXTURE0 + texture);
                 _gl.runtimeCheck();
                 _activeTexture = texture;
-            }
+            //}
         }
 
         /// Gets texture unit i.
