@@ -177,6 +177,14 @@ final class SDL2Renderer
             if (0 != SDL_RenderCopy(_renderer, texture._handle, &src, &dst))
                 _sdl2.throwSDL2Exception("SDL_RenderCopy");
         }
+
+		SDL2RendererInfo getRendererInfo()
+		{
+			SDL_RendererInfo info;
+			if (0 != SDL_GetRendererInfo(_renderer, &info))
+				_sdl2.throwSDL2Exception("SDL_GetRendererInfo");
+			return new SDL2RendererInfo(_sdl2._log, 0, info);
+		}
     }
 
     package
