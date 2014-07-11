@@ -206,6 +206,11 @@ final class SDLFont
             return checkedSurface(TTF_RenderUTF8_Blended(_font, toStringz(text), color));
         }
 
+        SDL2Surface renderTextBlendedWrapped(string text, SDL_Color color, uint wrapLength)
+        {
+            return checkedSurface(TTF_RenderUTF8_Blended_Wrapped(_font, toStringz(text), color, wrapLength));
+        }
+
         /// Create an 8-bit palettized surface and render the given text at fast 
         /// quality with the given font and color.
         /// Throws: $(D SDL2Exception) on error.
