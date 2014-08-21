@@ -577,7 +577,7 @@ T dot(T, size_t N)(const Vector!(T, N) a, const Vector!(T, N) b) pure nothrow
     T sum = 0;
     for(size_t i = 0; i < N; ++i)
     {
-        sum += a[i] * b[i];
+        sum += a.v[i] * b.v[i];
     }
     return sum;
 }
