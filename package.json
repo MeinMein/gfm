@@ -78,7 +78,7 @@
             "sourcePaths": [ "opengl/gfm/opengl" ],
             "importPaths": [ "opengl" ],
             "dependencies": {
-                "derelict-gl3": "~master",
+                "derelict-gl3": "==1.0.14",
                 "gfm:core": "~master",
                 "gfm:math": "~master"
             }
